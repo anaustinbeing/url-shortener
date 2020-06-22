@@ -1,0 +1,35 @@
+{% extends "shorty/index.html" %}}
+
+{% block content %}
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">URL</th>
+        <th scope="col">Shortened URL</th>
+        <th scope="col">#Clicks</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Last Accessed At</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for detail in details %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ detail.original_url }}</td>
+        <td>{{ detail.url_hash }}</td>
+        <td>{{ detail.clicks }}</td>
+        <td>{{ detail.created_at }}</td>
+        {% if detail.last_accessed_at != detail.created_at %}
+          <td>{{ detail.last_accessed_at }}</td>
+        {% else %}
+          <td> -- </td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% if not details %}
+        <p><center>You have no history</center></p>
+    {% endif %}
+{% endblock %}

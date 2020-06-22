@@ -1,0 +1,14 @@
+{% extends "shorty/index.html" %}}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    {{ form }}
+    {% if url %}
+      <input type="text" value={{ url }}>
+    {% endif %}     
+    <br>
+    <input type="submit" <button type="button" class="btn btn-success mr-1" " value="Shorten"></button>
+    <a href="details/"<button type="button" class="btn btn-info mr-1">History</button>
+  </form>
+{% endblock %}
